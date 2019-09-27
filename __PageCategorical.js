@@ -92,14 +92,14 @@ class PageCategorical {
 
         for (var i=0; i<Qs.length; i++) {
 
-            var question : Question = project.GetQuestion(Qs[i]);
-            var answerCount = question.AnswerCount;
+            //var question : Question = project.GetQuestion(Qs[i]);
+            var answerCount = QuestionUtil.getQuestionAnswers(context, Qs[i]).length;
             if (QuestionUtil.hasAnswer (context, Qs[i], naCode)) {
                 answerCount--;
             }
 
-            var qe: QuestionnaireElement = QuestionUtil.getQuestionnaireElement(context, Qs[i]);
-            var row: HeaderQuestion = new HeaderQuestion(qe);
+            var qe : QuestionnaireElement = QuestionUtil.getQuestionnaireElement(context, Qs[i]);
+            var row : HeaderQuestion = new HeaderQuestion(qe);
 
             row.IsCollapsed = (tableType == 'multi') ? true : false;
 
