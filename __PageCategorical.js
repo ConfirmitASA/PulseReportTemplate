@@ -95,6 +95,8 @@ class PageCategorical {
             //var question : Question = project.GetQuestion(Qs[i]);
             var questionAnswers = QuestionUtil.getQuestionAnswers(context, Qs[i]);
             var answerCount = questionAnswers.length;
+            log.logDebug(questionAnswers);
+            log.logDebug(answerCount);
             if (QuestionUtil.hasAnswer (context, Qs[i], naCode)) {
                 answerCount--;
             }
