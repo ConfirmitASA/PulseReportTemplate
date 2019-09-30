@@ -130,7 +130,7 @@ class QuestionUtil {
      * @returns {Answer []} answers or scale for grids
      */
 
-    static function getQuestionAnswers (context, questionId) {
+    static function getQuestionAnswers(context, questionId) {
 
         var state = context.state;
         var report = context.report;
@@ -163,14 +163,14 @@ class QuestionUtil {
      * @param {string} answerCode
      * @returns {boolean}
      */
-    static function hasAnswer (context, questionId, answerCode) {
+    static function hasAnswer(context, questionId, answerCode) {
         var state = context.state;
         var report = context.report;
         var log = context.log;
 
-        var project : Project = DataSourceUtil.getProject(context);
-        var q : Question = project.GetQuestion(questionId);
-        var answers = q.GetAnswers();
+        //var project : Project = DataSourceUtil.getProject(context);
+        //var q : Question = project.GetQuestion(questionId);
+        var answers = getQuestionAnswers(context, questionId);
         for (var k=0; k<answers.length; k++) {
             if (answers[k].Precode === answerCode) {
                 return true;
