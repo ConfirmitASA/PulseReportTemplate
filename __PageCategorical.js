@@ -95,10 +95,11 @@ class PageCategorical {
             var newAnswerCount = QuestionUtil.getQuestionAnswers(context, Qs[i]);
             log.LogDebug(newAnswerCount.length);
 
-            var question : Question = project.GetQuestion(Qs[i]);
-            var answerCount = question.AnswerCount;
+            //var question : Question = project.GetQuestion(Qs[i]);
+            //var answerCount = question.AnswerCount;
+            var answerCount = newAnswerCount.length;
 
-            if (QuestionUtil.hasAnswer (context, Qs[i], naCode)) {
+            if (QuestionUtil.hasAnswer(context, Qs[i], naCode)) {
                 answerCount--;
             }
 
@@ -207,9 +208,12 @@ class PageCategorical {
         var categoricals = [];
 
         for (var i=0; i<Qs.length; i++) {
+            var newAnswerCount = QuestionUtil.getQuestionAnswers(context, Qs[i]);
+            //log.LogDebug(newAnswerCount.length);
 
-            var question : Question = project.GetQuestion(Qs[i]);
-            var answerCount = question.AnswerCount;
+            //var question : Question = project.GetQuestion(Qs[i]);
+            //var answerCount = question.AnswerCount;
+            var answerCount = newAnswerCount.length;
 
             if (QuestionUtil.hasAnswer (context, Qs[i], naCode)) {
                 answerCount--;
