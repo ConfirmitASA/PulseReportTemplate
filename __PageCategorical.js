@@ -93,7 +93,6 @@ class PageCategorical {
         for (var i=0; i<Qs.length; i++) {
 
             var newAnswerCount = QuestionUtil.getQuestionAnswers(context, Qs[i]);
-            log.LogDebug(newAnswerCount.length);
 
             //var question : Question = project.GetQuestion(Qs[i]);
             //var answerCount = question.AnswerCount;
@@ -209,7 +208,6 @@ class PageCategorical {
 
         for (var i=0; i<Qs.length; i++) {
             var newAnswerCount = QuestionUtil.getQuestionAnswers(context, Qs[i]);
-            //log.LogDebug(newAnswerCount.length);
 
             //var question : Question = project.GetQuestion(Qs[i]);
             //var answerCount = question.AnswerCount;
