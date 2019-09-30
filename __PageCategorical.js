@@ -97,7 +97,7 @@ class PageCategorical {
 
             //var question : Question = project.GetQuestion(Qs[i]);
             //var answerCount = question.AnswerCount;
-            var answerCount = newAnswerCount.length;
+            var answerCount = Int32.Parse(newAnswerCount.length);
 
             if (QuestionUtil.hasAnswer(context, Qs[i], naCode)) {
                 answerCount--;
@@ -213,7 +213,7 @@ class PageCategorical {
 
             //var question : Question = project.GetQuestion(Qs[i]);
             //var answerCount = question.AnswerCount;
-            var answerCount = newAnswerCount.length;
+            var answerCount = Int32.Parse(newAnswerCount.length);
 
             if (QuestionUtil.hasAnswer (context, Qs[i], naCode)) {
                 answerCount--;
