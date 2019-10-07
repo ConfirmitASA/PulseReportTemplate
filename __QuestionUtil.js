@@ -46,6 +46,7 @@ class QuestionUtil {
             } else if(q.QuestionType == QuestionType.MultiOpen) {
                 questionInfo.type = 'openFromList';
             }
+
         } else { // question is not found
             throw new Error('QuestionUtil.questionInfo: Question "'+questionId+'" is not found for ds '+DataSourceUtil.getDsId(context));
         }
