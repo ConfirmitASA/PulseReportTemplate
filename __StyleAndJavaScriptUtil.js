@@ -141,6 +141,9 @@ class StyleAndJavaScriptUtil {
             +'{ color: '+kpiColor+'  !important;}'
             +'div.reportal-horizontal-menu>.yui3-menu .css-menu-topitem a:hover {'
             +'border-bottom-color:'+kpiColor+'!important;}'
+            +'div.reportal-horizontal-menu>.yui3-menu .css-menu-topitem.css-menu-selected a {'
+            +'border-bottom-color:'+kpiColor+'!important;}'
+
 
             //header background
             +'.global-header {'
