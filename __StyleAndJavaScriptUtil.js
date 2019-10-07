@@ -139,7 +139,7 @@ class StyleAndJavaScriptUtil {
             //nav menu item color
             +'.css-menu .yui3-menuitem:hover > a'
             +'{ color: '+kpiColor+'  !important;}'
-            +'div.reportal-horizontal-menu>.yui3-menu .css-menu-topitem:hover {'
+            +'div.reportal-horizontal-menu>.yui3-menu .css-menu-topitem a:hover {'
             +'border-bottom-color:'+kpiColor+'!important;}'
 
             //header background
