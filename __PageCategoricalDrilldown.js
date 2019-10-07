@@ -59,7 +59,7 @@ class PageCategoricalDrilldown {
 
         var row : HeaderQuestion = new HeaderQuestion(qe);
         TableUtil.maskOutNA(context, row);
-        row.IsCollapsed = (question.QuestionType === QuestionType.Single) ? false : true;
+        row.IsCollapsed = (question.QuestionType === QuestionType.Single || qInfo.type == 'singleFromGrid') ? false : true;
         row.ShowTitle = false;
         row.ShowTotals = false;
         TableUtil.addBreakByNestedHeader(context, row);
