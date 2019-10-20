@@ -8,8 +8,9 @@ class Filters {
     static function GetSurveyDataFilterList (context) {
 
         var log = context.log;
-
+log.LogDebug('GetSurveyDataFilterList 1')
         var filterFromSurveyData = DataSourceUtil.getSurveyPropertyValueFromConfig(context, 'FiltersFromSurveyData');  
+        log.LogDebug('GetSurveyDataFilterList 2 '+JSON.stringify(filterFromSurveyData))
         return !filterFromSurveyData? [] : PulseProgramUtil.excludeItemsWithoutData(context, filterFromSurveyData);
     }
 
