@@ -108,11 +108,8 @@ class PageResponseRate {
 
         var table = context.table;
         var log = context.log;
-        log.LogDebug('tableCollectionPeriod_Render 1')
-
         var qId  = DataSourceUtil.getSurveyPropertyValueFromConfig (context, 'DateQuestion');
         var qe: QuestionnaireElement = QuestionUtil.getQuestionnaireElement(context, qId);
-        log.LogDebug('tableCollectionPeriod_Render 2')
         var column: HeaderQuestion = new HeaderQuestion(qe);
         column.TimeSeries.FlatLayout = true;
         column.TimeSeries.Time1 = TimeseriesTimeUnitType.Year;
@@ -122,12 +119,10 @@ class PageResponseRate {
         column.ShowTitle = false;
         column.ShowTotals = false;
         table.ColumnHeaders.Add(column);
-        log.LogDebug('tableCollectionPeriod_Render 3')
 
         // global table settings
         table.Caching.Enabled = false;
-        table.RemoveEmptyHeaders.Columns = true;
-        log.LogDebug('tableCollectionPeriod_Render 4')
+        table.RemoveEmptyHeaders.Columns = false;
     }
 
     /**
