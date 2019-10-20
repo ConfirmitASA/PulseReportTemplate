@@ -39,7 +39,7 @@ class PagePulseSurveyData {
                 (questionInfo.hasOwnProperty('standardType')) ? questionType = questionInfo.standardType : questionType = questionInfo.type;
 
                 if(questionType.indexOf('hierarchy')>=0) {
-                    header:HeaderSegment = new HeaderSegment();
+                    header = new HeaderSegment();
                     header.DataSourceNodeId = DataSourceUtil.getDsId(context);
                     header = HeaderSegmentType.Expression;
                     header = HierarchyUtil.getHierarchyFilterExpressionForCurrentRB (context);
