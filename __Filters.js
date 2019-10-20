@@ -51,8 +51,11 @@ class Filters {
     static function GetGlobalFilterList (context) {
 
         var log = context.log; 
+        log.LogDebug('GetGlobalFilterList 1 ')
         var filterFromRespondentData = GetBackgroundDataFilterList (context);
+        log.LogDebug('GetGlobalFilterList 2 '+JSON.stringify(filterFromRespondentData))
         var filterFromSurveyData = GetSurveyDataFilterList (context);
+        log.LogDebug('GetGlobalFilterList 3 '+JSON.stringify(filterFromSurveyData))
 
         return filterFromRespondentData.concat(filterFromSurveyData);
     }
@@ -67,14 +70,12 @@ class Filters {
     static function GetFilterListByType (context, filtersType) {
 
         var log = context.log;
-        log.LogDebug('GetFilterListByType 1')
 
         //if filter type is not set it is either global or pageSpecific 
         //page specificness can be defined by context
         if(!filtersType) {            
             var isPageSpecific = context.pageSpecific;
             filtersType = isPageSpecific ? 'pageSpecific' : 'global';
-            log.LogDebug('GetFilterListByType 2 '+filtersType)
         }
 
         if(filtersType === 'background') {
