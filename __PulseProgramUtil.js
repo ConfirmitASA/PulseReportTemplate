@@ -148,14 +148,14 @@ class PulseProgramUtil {
     static public function getPulseSurveyContentInfo_ItemsWithData (context) {
 
         var log = context.log;
-        //log.LogDebug('getPulseSurveyContentInfo_ItemsWithData start')
+        log.LogDebug('getPulseSurveyContentInfo_ItemsWithData start')
         var key = getKeyForPulseSurveyContentInfo(context);
         var resources = pulseSurveyContentInfo[key];
         var resourcesBase = pulseSurveyContentBaseValues[key];
         var resourcesWithData = {};
 
-        //log.LogDebug(JSON.stringify(pulseSurveyContentInfo))
-        //log.LogDebug(JSON.stringify(pulseSurveyContentBaseValues))
+        log.LogDebug(JSON.stringify(pulseSurveyContentInfo))
+        log.LogDebug(JSON.stringify(pulseSurveyContentBaseValues))
 
         if(resources.length > resourcesBase.length) {
             setPulseSurveyContentBaseValues(context);
@@ -167,7 +167,7 @@ class PulseProgramUtil {
                 resourcesWithData[resources[i].Code] = { Type: resources[i].Type};
             }
         }
-        //log.LogDebug('getPulseSurveyContentInfo_ItemsWithData end')
+        log.LogDebug('getPulseSurveyContentInfo_ItemsWithData end')
 
         return resourcesWithData;
     }
@@ -182,10 +182,9 @@ class PulseProgramUtil {
 
         var log = context.log;
 
-        log.LogDebug('excludeItemsWithoutData start '+JSON.stringify(allOptions))
+        //log.LogDebug('excludeItemsWithoutData start '+JSON.stringify(allOptions))
         var key = getKeyForPulseSurveyContentInfo(context);
         var resources = pulseSurveyContentInfo.hasOwnProperty(key) && pulseSurveyContentInfo[key];
-        log.LogDebug(JSON.stringify(resources))
 
         //not pulse program or there's nothing to exclude on this page
         if(DataSourceUtil.isProjectSelectorNotNeeded(context) || !resources || resources.length === 0) {
