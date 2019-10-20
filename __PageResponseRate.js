@@ -122,7 +122,7 @@ class PageResponseRate {
 
         // global table settings
         table.Caching.Enabled = false;
-        table.RemoveEmptyHeaders.Columns = false;
+        table.RemoveEmptyHeaders.Columns = true;
     }
 
     /**
