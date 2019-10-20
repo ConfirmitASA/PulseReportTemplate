@@ -145,9 +145,8 @@ class PageResponseRate {
         var report = context.report;
         var state = context.state;
         var log = context.log;
-        log.LogDebug('getCollectionPeriod 1')
         var dates = report.TableUtils.GetColumnHeaderCategoryTitles("Response_Rate:CollectionPeriod");
-        log.LogDebug('getCollectionPeriod 2')
+
         if (dates.length > 0) {
             var period = dates[0];
             if (dates.length > 1) {
@@ -157,7 +156,7 @@ class PageResponseRate {
         else {
             period = 'N/A';
         }
-        log.LogDebug('getCollectionPeriod 3')
+
         return period;
     }
 
