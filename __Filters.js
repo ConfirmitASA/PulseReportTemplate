@@ -51,9 +51,7 @@ class Filters {
 
         var log = context.log; 
         var filterFromRespondentData = GetBackgroundDataFilterList (context);
-        log.LogDebug('GetGlobalFilterList 2 '+JSON.stringify(filterFromRespondentData))
         var filterFromSurveyData = GetSurveyDataFilterList (context);
-        log.LogDebug('GetGlobalFilterList 3 '+JSON.stringify(filterFromSurveyData))
 
         return filterFromRespondentData.concat(filterFromSurveyData);
     }
