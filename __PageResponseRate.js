@@ -291,6 +291,7 @@ class PageResponseRate {
                 hq.ReferenceGroup.Enabled = true;
                 hq.ReferenceGroup.Self = false;
                 var parentLevels = HierarchyUtil.getParentLevelsForCurrentHierarchyNode(context);
+                log.LogDebug('parentLevels='+parentLevels)
                 hq.ReferenceGroup.Levels = parentLevels.join(', ');
             }
             table.RowHeaders.Add(hq);
