@@ -67,12 +67,14 @@ class Filters {
     static function GetFilterListByType (context, filtersType) {
 
         var log = context.log;
+        log.LogDebug('GetFilterListByType 1')
 
         //if filter type is not set it is either global or pageSpecific 
         //page specificness can be defined by context
         if(!filtersType) {            
             var isPageSpecific = context.pageSpecific;
             filtersType = isPageSpecific ? 'pageSpecific' : 'global';
+            log.LogDebug('GetFilterListByType 2 '+filtersType)
         }
 
         if(filtersType === 'background') {
@@ -80,6 +82,7 @@ class Filters {
         } else if (filtersType === 'survey') {
             return GetSurveyDataFilterList(context);
         } else if (filtersType === 'global'){
+            log.LogDebug('GetFilterListByType 3')
             return GetGlobalFilterList (context);
         } else if (filtersType === 'pageSpecific') {
             context.isCustomSource = false;  // to get page specific filters from config we always use main source
