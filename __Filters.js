@@ -8,9 +8,7 @@ class Filters {
     static function GetSurveyDataFilterList (context) {
 
         var log = context.log;
-log.LogDebug('GetSurveyDataFilterList 1')
         var filterFromSurveyData = DataSourceUtil.getSurveyPropertyValueFromConfig(context, 'FiltersFromSurveyData');  
-        log.LogDebug('GetSurveyDataFilterList 2 '+JSON.stringify(filterFromSurveyData))
         return !filterFromSurveyData? [] : PulseProgramUtil.excludeItemsWithoutData(context, filterFromSurveyData);
     }
 
@@ -52,7 +50,6 @@ log.LogDebug('GetSurveyDataFilterList 1')
     static function GetGlobalFilterList (context) {
 
         var log = context.log; 
-        log.LogDebug('GetGlobalFilterList 1 ')
         var filterFromRespondentData = GetBackgroundDataFilterList (context);
         log.LogDebug('GetGlobalFilterList 2 '+JSON.stringify(filterFromRespondentData))
         var filterFromSurveyData = GetSurveyDataFilterList (context);
@@ -84,7 +81,6 @@ log.LogDebug('GetSurveyDataFilterList 1')
         } else if (filtersType === 'survey') {
             return GetSurveyDataFilterList(context);
         } else if (filtersType === 'global'){
-            log.LogDebug('GetFilterListByType 3')
             return GetGlobalFilterList (context);
         } else if (filtersType === 'pageSpecific') {
             context.isCustomSource = false;  // to get page specific filters from config we always use main source

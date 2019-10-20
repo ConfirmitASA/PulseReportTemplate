@@ -182,16 +182,19 @@ class PulseProgramUtil {
 
         var log = context.log;
 
-        //log.LogDebug('excludeItemsWithoutData start')
+        log.LogDebug('excludeItemsWithoutData start '+JSON.stringify(allOptions))
         var key = getKeyForPulseSurveyContentInfo(context);
         var resources = pulseSurveyContentInfo.hasOwnProperty(key) && pulseSurveyContentInfo[key];
+        log.LogDebug(JSON.stringify(resources))
 
         //not pulse program or there's nothing to exclude on this page
         if(DataSourceUtil.isProjectSelectorNotNeeded(context) || !resources || resources.length === 0) {
             return allOptions;
         }
-
+log.LogDebug('excludeItemsWithoutData 1')
         var availableCodes = getPulseSurveyContentInfo_ItemsWithData(context);
+        log.LogDebug('excludeItemsWithoutData 2')
+        
         var optionsWithData = [];
 
         for(var i=0; i<allOptions.length; i++) {
@@ -203,7 +206,7 @@ class PulseProgramUtil {
             }
         }
 
-        //log.LogDebug('excludeItemsWithoutData end')
+        log.LogDebug('excludeItemsWithoutData end')
         return optionsWithData;
     }
 
