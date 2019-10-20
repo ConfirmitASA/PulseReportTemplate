@@ -148,14 +148,14 @@ class PulseProgramUtil {
     static public function getPulseSurveyContentInfo_ItemsWithData (context) {
 
         var log = context.log;
-        log.LogDebug('getPulseSurveyContentInfo_ItemsWithData start')
+        //log.LogDebug('getPulseSurveyContentInfo_ItemsWithData start')
         var key = getKeyForPulseSurveyContentInfo(context);
         var resources = pulseSurveyContentInfo[key];
         var resourcesBase = pulseSurveyContentBaseValues[key];
         var resourcesWithData = {};
 
-        log.LogDebug(JSON.stringify(pulseSurveyContentInfo))
-        log.LogDebug(JSON.stringify(pulseSurveyContentBaseValues))
+        //log.LogDebug(JSON.stringify(pulseSurveyContentInfo))
+        //log.LogDebug(JSON.stringify(pulseSurveyContentBaseValues))
 
         if(resources.length > resourcesBase.length) {
             setPulseSurveyContentBaseValues(context);
@@ -167,7 +167,7 @@ class PulseProgramUtil {
                 resourcesWithData[resources[i].Code] = { Type: resources[i].Type};
             }
         }
-        log.LogDebug('getPulseSurveyContentInfo_ItemsWithData end')
+        //log.LogDebug('getPulseSurveyContentInfo_ItemsWithData end')
 
         return resourcesWithData;
     }
@@ -190,10 +190,8 @@ class PulseProgramUtil {
         if(DataSourceUtil.isProjectSelectorNotNeeded(context) || !resources || resources.length === 0) {
             return allOptions;
         }
-log.LogDebug('excludeItemsWithoutData 1')
-        var availableCodes = getPulseSurveyContentInfo_ItemsWithData(context);
-        log.LogDebug('excludeItemsWithoutData 2')
         
+        var availableCodes = getPulseSurveyContentInfo_ItemsWithData(context);        
         var optionsWithData = [];
 
         for(var i=0; i<allOptions.length; i++) {
@@ -205,7 +203,7 @@ log.LogDebug('excludeItemsWithoutData 1')
             }
         }
 
-        log.LogDebug('excludeItemsWithoutData end')
+        //log.LogDebug('excludeItemsWithoutData end')
         return optionsWithData;
     }
 

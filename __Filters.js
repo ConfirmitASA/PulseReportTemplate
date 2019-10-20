@@ -154,21 +154,15 @@ class Filters {
     static function hideScriptedFilterByOrder(context, paramNum) {
 
         var log = context.log;
-        log.LogDebug('hideScriptedFilterByOrder 1')
         var numberOfBackgroundDataFilters = GetBackgroundDataFilterList(context).length;
-        log.LogDebug('hideScriptedFilterByOrder 2 '+numberOfBackgroundDataFilters)
         var filterList = GetFilterListByType (context);
-        log.LogDebug('hideScriptedFilterByOrder 3 '+JSON.stringify(filterList))
         var CurrentPageId = PageUtil.getCurrentPageIdInConfig(context);
-        log.LogDebug('hideScriptedFilterByOrder 4 CurrentPageId='+CurrentPageId)
 
         // paramNum should be less than number of filter components on all pages
         // paramNum should be less than number of filters based on BG vars on Response Rate page
         if(paramNum > filterList.length || (CurrentPageId === 'Page_Response_Rate' && paramNum >numberOfBackgroundDataFilters)) {
-            log.LogDebug('hideScriptedFilterByOrder 5')
             return true;    // hide
         }
-        log.LogDebug('hideScriptedFilterByOrder 6')
 
         return false; // don't hide
     }

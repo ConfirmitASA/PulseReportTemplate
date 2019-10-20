@@ -43,10 +43,6 @@ class PagePulseSurveyData {
                     header.DataSourceNodeId = DataSourceUtil.getDsId(context);
                     header.SegmentType = HeaderSegmentType.Expression;
                     header.Expression = HierarchyUtil.getHierarchyFilterExpressionForCurrentRB (context);
-                    /*header = new HeaderQuestion(qe);
-                    header.ReferenceGroup.Enabled = true;
-                    header.ReferenceGroup.Self = true;
-                    header.ShowTotals = false;*/
                     table.RowHeaders.Add(header);
 
                 } else if(questionType.indexOf('multi')>=0) {
