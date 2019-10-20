@@ -41,8 +41,8 @@ class PagePulseSurveyData {
                 if(questionType.indexOf('hierarchy')>=0) {
                     header = new HeaderSegment();
                     header.DataSourceNodeId = DataSourceUtil.getDsId(context);
-                    header = HeaderSegmentType.Expression;
-                    header = HierarchyUtil.getHierarchyFilterExpressionForCurrentRB (context);
+                    header.SegmentType = HeaderSegmentType.Expression;
+                    header.Expression = HierarchyUtil.getHierarchyFilterExpressionForCurrentRB (context);
                     /*header = new HeaderQuestion(qe);
                     header.ReferenceGroup.Enabled = true;
                     header.ReferenceGroup.Self = true;
