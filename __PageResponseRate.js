@@ -106,14 +106,13 @@ class PageResponseRate {
      */
     static function tableCollectionPeriod_Render(context){
 
-        var report = context.report;
-        var state = context.state;
         var table = context.table;
         var log = context.log;
+        log.LogDebug('tableCollectionPeriod_Render 1')
 
-        var project : Project = DataSourceUtil.getProject(context);
         var qId  = DataSourceUtil.getSurveyPropertyValueFromConfig (context, 'DateQuestion');
         var qe: QuestionnaireElement = QuestionUtil.getQuestionnaireElement(context, qId);
+        log.LogDebug('tableCollectionPeriod_Render 2')
         var column: HeaderQuestion = new HeaderQuestion(qe);
         column.TimeSeries.FlatLayout = true;
         column.TimeSeries.Time1 = TimeseriesTimeUnitType.Year;
@@ -123,10 +122,12 @@ class PageResponseRate {
         column.ShowTitle = false;
         column.ShowTotals = false;
         table.ColumnHeaders.Add(column);
+        log.LogDebug('tableCollectionPeriod_Render 3')
 
         // global table settings
         table.Caching.Enabled = false;
         table.RemoveEmptyHeaders.Columns = true;
+        log.LogDebug('tableCollectionPeriod_Render 4')
     }
 
     /**
@@ -149,8 +150,9 @@ class PageResponseRate {
         var report = context.report;
         var state = context.state;
         var log = context.log;
-
+        log.LogDebug('getCollectionPeriod 1')
         var dates = report.TableUtils.GetColumnHeaderCategoryTitles("Response_Rate:CollectionPeriod");
+        log.LogDebug('getCollectionPeriod 2')
         if (dates.length > 0) {
             var period = dates[0];
             if (dates.length > 1) {
@@ -160,6 +162,7 @@ class PageResponseRate {
         else {
             period = 'N/A';
         }
+        log.LogDebug('getCollectionPeriod 3')
         return period;
     }
 
