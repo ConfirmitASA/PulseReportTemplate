@@ -86,7 +86,15 @@ public class PulseSurveys_ReportalTable implements IPulseSurveysInfo {
                 addInfo.push(headerRow[colNum-4]);
             }
 
-            log.LogDebug('CreatedDate for ' + sureveyId + ' = ' + rowInfoWithDates[i][rowInfoWithDates[i].length - 2]);
+            var createdDate_Year = parseInt(rowInfoWithDates[i][rowInfoWithDates[i].length - 2]);
+            var createdDate_Month = DateUtil.GetMonthCodeByName(rowInfoWithDates[i][rowInfoWithDates[i].length - 3]);
+            var createdDate_Day = parseInt(rowInfoWithDates[i][rowInfoWithDates[i].length - 4]);
+
+            var createdDate : DateTime = new DateTime(createdDate_Year, createdDate_Month, createdDate_Day);
+
+            if(_additionalInfo['CreatedDate']) {
+                addInfo.push(DateUtil.formatDateTimeToString(createdDate));
+            }
 
             addInfo = addInfo.join(', ');
 

@@ -91,4 +91,24 @@ class DateUtil {
 
         return '';
     }
+
+    /**
+     * Function to get the number of the month based on it's name
+     * @param {String} mName - name of the month
+     * @returns {Int} number of the month (1 through 12)
+     */
+    static function GetMonthCodeByName(mName) {
+        if(mName == 'Jan' || mName == 'January') return 1;
+        if(mName == 'Feb' || mName == 'February') return 2;
+        if(mName == 'Mar' || mName == 'March') return 3;
+        if(mName == 'Apr' || mName == 'April') return 4;
+        if(mName == 'May') return 5;
+        if(mName == 'Jun' || mName == 'June') return 6;
+        if(mName == 'Jul' || mName == 'July') return 7;
+        if(mName == 'Aug' || mName == 'August') return 8;
+        if(mName == 'Sep' || mName == 'Sept' || mName == 'September') return 9;
+        if(mName == 'Oct' || mName == 'October') return 10;
+        if(mName == 'Nov' || mName == 'November') return 11;
+        if(mName == 'Dec' || mName == 'December') return 12;
+    }
 }
