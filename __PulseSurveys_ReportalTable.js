@@ -101,9 +101,20 @@ public class PulseSurveys_ReportalTable implements IPulseSurveysInfo {
             surveyInfo.Label = addInfo.length >0 ? surveyName+' ('+addInfo+')' : surveyName; //label - inner header
             surveyInfo.Label = surveyInfo.Label.toUpperCase();
             surveyInfo.Code = sureveyId; // pid - outer header
+            surveyInfo.CreatedDate = createdDate;
+
             surveyList.push(surveyInfo);
         }
 
-        return surveyList;
+        return surveyList.sort(sortSurveyListByCreatedDateDescending);
+    }
+
+    /**
+     * help function that sorts pulse surveys descending using their Created Date
+     */
+    static function sortSurveyListByCreatedDateDescending(a, b) {
+        if(DateTime.Compare(a.CreatedDate, b.CreatedDate) < 0) return 1;
+        if(DateTime.Compare(a.CreatedDate, b.CreatedDate) == 0) return 0;
+        if(DateTime.Compare(a.CreatedDate, b.CreatedDate) > 0) return -1;
     }
 }
