@@ -16,7 +16,7 @@ public class PulseSurveys_ReportalTable implements IPulseSurveysInfo {
             _additionalInfo = storageInfo.additionalInfo;
         } else {
             throw new Error ('PulseSurveys_ReportalTable: additional info is not provided for pulse program surveys table');
-        } 
+        }
     }
 
     /**
@@ -44,7 +44,7 @@ public class PulseSurveys_ReportalTable implements IPulseSurveysInfo {
             emptyOption.Label = TextAndParameterUtil.getTextTranslationByKey(context, 'SelectSurveyEmptyOption');
             emptyOption.Code = 'none';
             surveyList[0] = emptyOption;
-        }        
+        }
 
         surveyList = surveyList.concat(transformTableHeaderTitlesIntoObj(context, rowInfo));
 
@@ -59,7 +59,10 @@ public class PulseSurveys_ReportalTable implements IPulseSurveysInfo {
     private function transformTableHeaderTitlesIntoObj(context, HeaderCategoryTitles) {
 
         var log = context.log;
+        var report = context.report;
         var surveyList = [];
+
+        var rowInfoWithDates = report.TableUtils.GetRowHeaderCategoryTitles(_pulseSurveysTablePath + '_Date');
 
         // loop by rows of header groups (many custom tables can be used)
         for(var i=HeaderCategoryTitles.length-1; i>=0; i--) { // reverse order
@@ -73,22 +76,24 @@ public class PulseSurveys_ReportalTable implements IPulseSurveysInfo {
 
             //hardcoded in the table: pid->pname->creator->status
             var addInfo = [];
-            
+
             if(_additionalInfo['CreatedByEndUserName']) {
                 var author = headerRow[colNum-3];
                 author.length>0 ? addInfo.push(author) : addInfo.push('undefined user'); //better ideas welcome
-            } 
+            }
 
             if(_additionalInfo['Status']) {
-                addInfo.push(headerRow[colNum-4]); 
+                addInfo.push(headerRow[colNum-4]);
             }
+
+            log.LogDebug('CreatedDate for ' + sureveyId + ' = ' + rowInfoWithDates[rowInfoWithDates.length - 1]);
 
             addInfo = addInfo.join(', ');
 
             surveyInfo.Label = addInfo.length >0 ? surveyName+' ('+addInfo+')' : surveyName; //label - inner header
             surveyInfo.Label = surveyInfo.Label.toUpperCase();
             surveyInfo.Code = sureveyId; // pid - outer header
-            surveyList.push(surveyInfo);            
+            surveyList.push(surveyInfo);
         }
 
         return surveyList;
