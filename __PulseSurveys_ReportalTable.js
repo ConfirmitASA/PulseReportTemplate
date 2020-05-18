@@ -86,7 +86,7 @@ public class PulseSurveys_ReportalTable implements IPulseSurveysInfo {
                 addInfo.push(headerRow[colNum-4]);
             }
 
-            log.LogDebug('CreatedDate for ' + sureveyId + ' = ' + rowInfoWithDates[i][rowInfoWithDates[i].length - 1]);
+            log.LogDebug('CreatedDate for ' + sureveyId + ' = ' + rowInfoWithDates[i][rowInfoWithDates[i].length - 2]);
 
             addInfo = addInfo.join(', ');
 
