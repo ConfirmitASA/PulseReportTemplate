@@ -141,9 +141,9 @@ class PagePulseSurveyData {
 
          var log = context.log;
          var cnt = headers.Count;
-        var project : Project = DataSourceUtil.getProject(context);
+         var project : Project = DataSourceUtil.getProject(context, 'ds2');
 
-        for (var i = 0; i < cnt; i++) {
+         for (var i = 0; i < cnt; i++) {
             var hd: HeaderQuestion = headers[i];
             hd.ShowTotals = false;
             hd.Sorting.Enabled = false;
