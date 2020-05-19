@@ -141,7 +141,7 @@ class PagePulseSurveyData {
 
          var log = context.log;
          var cnt = headers.Count;
-         var project : Project = DataSourceUtil.getProject(context, 'ds2');
+         //var project : Project = DataSourceUtil.getProject(context, 'ds2');
 
          for (var i = 0; i < cnt; i++) {
             var hd: HeaderQuestion = headers[i];
@@ -149,16 +149,16 @@ class PagePulseSurveyData {
             hd.Sorting.Enabled = false;
 
             var qe : QuestionnaireElement = hd.QuestionnaireElement;
-            var questionInfo = QuestionUtil.getQuestionInfo(context, qe.QuestionId);
+            //var questionInfo = QuestionUtil.getQuestionInfo(context, qe.QuestionId);
 
-            if(questionInfo.type == 'general') {
-                var question : Question = project.GetQuestion(qe.QuestionId);
-                if(question.QuestionType == QuestionType.Date) {
+           // if(questionInfo.type == 'general') {
+               // var question : Question = project.GetQuestion(qe.QuestionId);
+                if(qe.QuestionId == 'CreatedDate') {
                     hd.TimeSeries.Time1 = TimeseriesTimeUnitType.Year;
                     hd.TimeSeries.Time2 = TimeseriesTimeUnitType.Month;
                     hd.TimeSeries.Time3 = TimeseriesTimeUnitType.DayOfMonth;
                 }
-            }
+           // }
 
             setHeadersProperties(context, headers[i].SubHeaders);
         }
