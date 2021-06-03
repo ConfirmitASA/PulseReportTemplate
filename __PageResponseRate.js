@@ -96,6 +96,7 @@ class PageResponseRate {
         table.RemoveEmptyHeaders.Columns = false;
         table.RemoveEmptyHeaders.Rows = false;
         table.UseRespondentData = true;
+        tableStatements_ApplyConditionalFormatting(context);
     }
 
     /**
