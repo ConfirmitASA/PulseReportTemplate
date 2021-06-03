@@ -233,6 +233,9 @@ class TableUtil {
         } else if(breakVariables && breakVariables.length>0 && pageId === 'Page_CategoricalDrilldown') {
             breakByParameter = 'p_CategoricalDD_BreakBy';
             breakByType = 'Question';
+        } else if(breakVariables && breakVariables.length>0 && pageId === 'Page_CulturalBehaviors') {
+            breakByParameter = 'p_CulturalBehaviors_BreakBy';
+            breakByType = 'Question';
         }
 
         var selectedOption = ParamUtil.GetSelectedOptions(context, breakByParameter)[0];
@@ -597,5 +600,68 @@ class TableUtil {
 
             return emptyWaveHeader;
         }
+    }
+
+    /*
+     * @memberof TableUtil
+     * @function getSimpleQuestionHeader
+     * @description Create HeaderQuestion column with the Question
+     * @param {Object} context - {table: table, pageContext: this.pageContext, report: report, user: user, state: state, confirmit: confirmit, log: log, suppressSettings: suppressSettings}
+     * @param {Object} question
+     * @param {Object} subHeaders
+     * @return {HeaderQuestion} created column
+     */
+    static function getSimpleQuestionHeader(context, question, showTotals, subHeaders) {
+        var header = getHeaderDescriptorObject(context, question);
+        var questionColumn;
+
+        if (header.Type === 'Question') {
+            var qe = QuestionUtil.getQuestionnaireElement(context, header.Code);
+            questionColumn = new HeaderQuestion(qe);
+            questionColumn.IsCollapsed = true;
+            questionColumn.DefaultStatistic = StatisticsType.Average;
+        } else {
+            if (header.Type === 'Dimension') {
+                questionColumn = new HeaderCategorization();
+                questionColumn.CategorizationId = String(header.Code).replace(/[ ,&]/g, '');
+                questionColumn.DataSourceNodeId = DataSourceUtil.getDsId(context);
+                questionColumn.DefaultStatistic = StatisticsType.Average;
+                questionColumn.CalculationRule = CategorizationType.AverageOfAggregates; // AvgOfIndividual affects performance
+                questionColumn.Preaggregation = PreaggregationType.Average;
+                questionColumn.SampleRule = SampleEvaluationRule.Max;// https://jiraosl.firmglobal.com/bcolse/TQA-4116
+                questionColumn.Collapsed = false;
+                questionColumn.Totals = showTotals;
+            }
+        }
+
+        maskOutNA(context, questionColumn);
+
+        if(!!subHeaders && ArrayUtil.isArray(subHeaders)) {
+            for(var i = 0; i < subHeaders.length; i++) {
+                questionColumn.SubHeaders.Add(subHeaders[i]);
+            }
+        }
+
+        return questionColumn;
+    }
+
+    /*
+     * @memberof TableUtil
+     * @function getBaseColumn
+     * @description Create HeaderBase column
+     * @param {Object} context - {table: table, pageContext: this.pageContext, report: report, user: user, state: state, confirmit: confirmit, log: log, suppressSettings: suppressSettings}
+     * @param {Object} subHeaders
+     * @return {HeaderBase} created column
+     */
+    static function getBaseColumn(context, subHeaders) {
+        var headerBase: HeaderBase = new HeaderBase();
+
+        if(!!subHeaders && ArrayUtil.isArray(subHeaders)) {
+            for(var i = 0; i < subHeaders.length; i++) {
+                headerBase.SubHeaders.Add(subHeaders[i]);
+            }
+        }
+
+        return headerBase;
     }
 }

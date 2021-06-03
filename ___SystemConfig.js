@@ -55,7 +55,9 @@ public class SystemConfig {
         'p_AllResults_GapSettings': { type: 'StaticArrayofObjects', locationType: 'TextAndParameterLibrary', propertyName: 'GapSettings'},
 
         'p_LeadersExport_BreakBy': { type: 'QuestionList', locationType: 'Page', page: 'Page_LeadersExport', propertyName: 'BreakVariables', isQuestionBased: true},
-        'p_LeadersExport_Dimension' : { type: 'QuestionAndCategoriesList', locationType: 'Page', page: 'Page_LeadersExport', propertyName: 'Questions', isQuestionBased: true}
+        'p_LeadersExport_Dimension' : { type: 'QuestionAndCategoriesList', locationType: 'Page', page: 'Page_LeadersExport', propertyName: 'Questions', isQuestionBased: true},
+
+        'p_CulturalBehaviors_BreakBy' : { type: 'QuestionList', locationType: 'Page', page: 'Page_CulturalBehaviors', propertyName: 'BreakVariables', isQuestionBased: true}
 
     };
 
@@ -97,6 +99,7 @@ public class SystemConfig {
                             {type: 'QuestionsCategories', propertyWithCategories: 'CustomCategoriesMulti'}
                         ],
         Page_CategoricalDrilldown: ['BreakVariables'],
-        Page_Response_Rate: ['DemographicsQuestions']
+        Page_Response_Rate: ['DemographicsQuestions'],
+        Page_CulturalBehaviors: ['BreakVariables']
     }
 }

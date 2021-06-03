@@ -11,7 +11,8 @@ class Hitlist {
          * @returns {Boolean}
          */
         static function hitlistComments_Hide(context, baseTable, parameterWithOpenText){
-    
+            var log = context.log;
+
             if (SuppressUtil.isGloballyHidden(context)) {
                 return true;
             }
@@ -21,7 +22,7 @@ class Hitlist {
                 return true;
             }
     
-            var log = context.log;
+
             var report = context.report;
     
             // check base value in each table cell. If at least 1 value is less than Config.CommentSuppressValue, the whole hitlist is hidden
@@ -34,6 +35,7 @@ class Hitlist {
                     }
                 }
             }
+
             return false;
         }
       

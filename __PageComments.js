@@ -30,6 +30,7 @@ class PageComments {
          */
         static function hitlistComments_Hide(context){
            var log = context.log;
+
            return Hitlist.hitlistComments_Hide(context, "Base", "p_AllOpenTextQs");
         }
     
@@ -42,6 +43,7 @@ class PageComments {
         static function hitlistComments_Render(context){
     
             var log = context.log;
+
             var pageId = PageUtil.getCurrentPageIdInConfig(context);
     
             Hitlist.AddColumnsByParameter(context, "p_AllOpenTextQs", {sortable: true, searchable: false});
@@ -63,6 +65,7 @@ class PageComments {
          */
           static function tableBase_Render (context) {
               var log = context.log;
+
               var open_Ids = ParamUtil.GetSelectedCodes (context, 'p_AllOpenTextQs');
               var tag_Ids = ParamUtil.GetSelectedCodes (context, 'p_TagQs');
               SuppressUtil.buildReportBaseTableForHitlist(context, open_Ids, tag_Ids);
