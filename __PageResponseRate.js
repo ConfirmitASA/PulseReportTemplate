@@ -97,8 +97,6 @@ class PageResponseRate {
         table.RemoveEmptyHeaders.Rows = false;
         table.UseRespondentData = true;
 
-        var suppressSettings = context.suppressSettings;
-        SuppressUtil.setTableSuppress(table, suppressSettings);
     }
 
     /**
@@ -288,6 +286,10 @@ class PageResponseRate {
         var state = context.state;
         var log = context.log;
         var table = context.table;
+
+
+        var suppressSettings = context.suppressSettings;
+        SuppressUtil.setTableSuppress(table, suppressSettings);
 
         // add columns - standard set of headers for response rate calculation
         tableResponseRate_AddBanner(context, 'column');
