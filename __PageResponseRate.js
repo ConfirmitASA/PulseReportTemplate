@@ -96,6 +96,8 @@ class PageResponseRate {
         table.RemoveEmptyHeaders.Columns = false;
         table.RemoveEmptyHeaders.Rows = false;
         table.UseRespondentData = true;
+
+        var suppressSettings = context.suppressSettings;
         SuppressUtil.setTableSuppress(table, suppressSettings);
     }
 
