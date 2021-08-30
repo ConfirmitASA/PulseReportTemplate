@@ -277,6 +277,16 @@ class PageKPI {
 
         // add row = KPI question
         var Qs = TableUtil.getActiveQuestionsListFromPageConfig (context, pageId, 'KPI');
+	    
+	var minValues = DataSourceUtil.getPagePropertyValueFromConfig (context, pageId, 'KPIMinValues');
+	var maxValues = DataSourceUtil.getPagePropertyValueFromConfig (context, pageId, 'KPIMaxValues');
+	    
+	if (minValues == null || maxValues == null) {
+	  throw new Error('PageKPI.getKPIResult: KPIMinValues or KPIMaxValues are not found. Check Config settings.');
+	}
+	if(minValues.length<Qs.length || maxValues.length<Qs.length){
+	  throw new Error('PageKPI.getKPIResult: KPIMinValues or KPIMaxValues are not specified for some KPI questions. Check Config settings.');
+	}
 
         if(Qs.length === 0 || SuppressUtil.isGloballyHidden(context)) {
             return [];
@@ -288,7 +298,8 @@ class PageKPI {
         for (var i=0; i < Qs.length; i++) {
 
             var header = TableUtil.getHeaderDescriptorObject(context, Qs[i]);
-            var result = {qid: header.Code, title: titles[i], score: { value: 'N/A', color: Config.primaryGreyColor }, distribution: []};
+            
+            var result = {qid: header.Code, title: titles[i], score: { value: 'N/A', color: Config.primaryGreyColor }, distribution: [], minValue: minValues[i], maxValue: maxValues[i]};
             var rowValues: Datapoint[] = report.TableUtils.GetRowValues("KPI:KPI",i+1);
 
             if (rowValues.length) {
