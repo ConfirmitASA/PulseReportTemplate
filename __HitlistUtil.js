@@ -94,12 +94,13 @@ class Hitlist {
     
             var hitlist = context.hitlist;
             var log = context.log;
+            var project : Project = DataSourceUtil.getProject(context);
     
             var sortable = columnProps.sortable || false;
             var searchable = columnProps.searchable || false;
             var order = columnProps.order;
     
-            var qe : QuestionnaireElement = QuestionUtil.getQuestionnaireElementWithPrecode(context, qId, precode);
+            var qe : QuestionnaireElement = project.CreateQuestionnaireElement(qId, precode);
             var column : HitListColumn = new HitListColumn();
             column.QuestionnaireElement = qe;
             column.IsLink = false;
