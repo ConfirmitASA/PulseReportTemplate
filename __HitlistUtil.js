@@ -76,6 +76,43 @@ class Hitlist {
     
         }
     
+         /**
+         * @memberof Hitlist
+         * @instance
+         * @function AddColumnForSubquestion
+         * @description function to add a variable to the hitlist
+         * @param {Object} context
+         * @param {String} qId - qiestion Id
+         * @param {String} precode - qiestion precode
+         * @param {Object} columnProps - {
+         *          order: {Int} - column number to insert
+         *          sortable: {Boolean}
+         *          searchable: {Boolean}
+         *      }
+         */
+        static function AddColumnForSubquestion(context, qId, precode, columnProps) {
+    
+            var hitlist = context.hitlist;
+            var log = context.log;
+    
+            var sortable = columnProps.sortable || false;
+            var searchable = columnProps.searchable || false;
+            var order = columnProps.order;
+    
+            var qe : QuestionnaireElement = QuestionUtil.getQuestionnaireElementWithPrecode(context, qId, precode);
+            var column : HitListColumn = new HitListColumn();
+            column.QuestionnaireElement = qe;
+            column.IsLink = false;
+            column.IsSearchable = searchable;
+            column.IsSortable = sortable;
+            if (order) {
+                hitlist.Columns.Insert(order, column);
+            } else {
+                hitlist.Columns.Add(column);
+            }
+    
+        }
+    
     
         // check documentation.js on description format
         /**
