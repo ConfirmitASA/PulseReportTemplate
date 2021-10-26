@@ -842,7 +842,7 @@ class PageResults {
         //when result of difference evaluates to 0 it renders to the side of the barcharts
         //it's difficult to handle on js side as well, due to no markup to use or smth
         //so formula excludes (-1,1)
-        formula_ScoreVsPrevNorm.Expression = 'if((cellv(1,row)-cellv(' + normColPosition + ',row) < 0.1 AND (cellv(1,row)-cellv(' + normColPosition + ',row) > -0.1)), emptyv(), cellv(1,row)-cellv(' + normColPosition + ',row))'; // the 1st column in the table is score
+        formula_ScoreVsPrevNorm.Expression = 'if((cellv(1,row)-cellv(' + normColPosition + ',row) < 0.01 AND (cellv(1,row)-cellv(' + normColPosition + ',row) > -0.01)), emptyv(), cellv(1,row)-cellv(' + normColPosition + ',row))'; // the 1st column in the table is score
         table.ColumnHeaders.Add(formula_ScoreVsPrevNorm);
 
         // add barchart
