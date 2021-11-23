@@ -89,9 +89,9 @@ class PageCorrelation {
         avg.Priority = 10; //for case when score calced based on one set of scores and correlation on another
 
         if(correlationAxis.Type === 'manual') {
-            avg.Expression = 'if(col = 2, ' + correlationAxis.ZeroLine + ', AVERAGE(COLVALUES(2, ROWS)))';
+            avg.Expression = 'if(col = 5, ' + correlationAxis.ZeroLine + ', AVERAGE(COLVALUES(2, ROWS)))';
         } else {
-            avg.Expression = 'if(col = 2, (if(min(colvalues(2, rows)) < -0.3, (1 - min(colvalues(2, rows))) / 2, (1 - 0.3) / 2)), AVERAGE(COLVALUES(2, ROWS)))';
+            avg.Expression = 'if(col = 5, (if(min(colvalues(2, rows)) < -0.3, (1 - min(colvalues(2, rows))) / 2, (1 - 0.3) / 2)), AVERAGE(COLVALUES(2, ROWS)))';
         }
 
         return avg;
