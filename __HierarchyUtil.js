@@ -66,6 +66,10 @@ class HierarchyUtil {
         if(pageId == 'Page_Actions' && (!context.state.Parameters.IsNull("p_OnlyOwnActions") || !PageActions.isFeatureAvailableForUserRole(context, "ReportLevelAccess"))) {
             return '';
         }
+        //fix for version v2.2 - new page name
+        if(pageId == 'Page_Work' && (!context.state.Parameters.IsNull("p_OnlyOwnActions") || !PageActions.isFeatureAvailableForUserRole(context, "ReportLevelAccess"))) {
+            return '';
+        }
 
         //to use in public report
         if (parameterName) {
